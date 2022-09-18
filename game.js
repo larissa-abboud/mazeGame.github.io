@@ -1,20 +1,10 @@
-let counter  = 0;//global
-let flag_begin = false;
+var you_win = true;
 window.onload=function(){
 let m = document.getElementById("start");
 let m1 = document.getElementsByClassName("boundary");
 let m2 = document.getElementById("end");
 let m3 = document.getElementById("game");
-
-let flag_end = false;
-let counter_start = 0;
-
-var result= "none";
-
-
-
-
-
+var change = document.getElementById("boundary1");
 
 // start game
 /**
@@ -23,63 +13,59 @@ var result= "none";
  * if mouse out th
  */
 
+/////////////change color , alert, status
 
-
- m.addEventListener("mouseover", M_over)
-
-
-m.addEventListener("mouseleave",M_leave_start);
-console.log(flag_begin)
-//console.log(M_over(flag_begin))
-if(flag_begin){
-
- 
- 
- }
-
- 
-
-
-}
-
-
-function M_out(){
-  console.log("you lost");
+ m.addEventListener("mouseover", function (){
+  m3.addEventListener("mouseleave",function(){
+    console.log("cheating");
   
-}
-function M_over(flag_begin) {
-  flag_begin = true;
-  counter++;
-  console.log("start") ;// use counter and use if mouse out condion
-  return flag_begin
+  });
   
-  
- 
-  }
-function M_leave_start(){
-  flag_begin = true;
-  console.log(flag_begin)
+  for (var i = 0 ; i < m1.length; i++) {
+    
+    m1[i].addEventListener("mouseover", function(){
+       you_win = false;
+       console.log(you_win);
+      change.style.color = "red";
+      if (you_win == false){
+    console.log("l");
 
-}
-function M_over_border() {
-  console.log("you lose ") ;
-  counter--;
 
-  
+      
+     } }) ;//change
 
   }
-function M_over_end(){
-  flag_end = true;
-  console.log("you win");console.log(flag_end);
-  counter++
-  console.log(counter)
   
-}
-function M_end_event(){
+  m2.addEventListener("mouseover",function (){
+    if (you_win == true){
+    //update status
+    console.log("win");
+  }
+  you_win = true;});
+  
 
-  console.log("removed");
   
+
+  //flag_begin = true;
+  //counter++;
+  //console.log("start") ;// use counter and use if mouse out condion
+  //return flag_begin
+  
+  
+ 
+  
+ });
+ 
+
+
+ 
+
+
 }
+
+
+
+
 
 function result_f(result){
   if (counter<1)
@@ -94,7 +80,6 @@ function play( ){
     else{
       for (var i = 0 ; i < m1.length; i++) {
       m1[i].addEventListener("mouseover", M_over_border) ;
-result_f();
 
     
     }
