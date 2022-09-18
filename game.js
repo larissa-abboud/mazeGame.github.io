@@ -1,11 +1,12 @@
-var you_win = true;
+
 window.onload=function(){
 let m = document.getElementById("start");
 let m1 = document.getElementsByClassName("boundary");
 let m2 = document.getElementById("end");
 let m3 = document.getElementById("game");
-var change = document.getElementById("boundary1");
-
+let change = document.getElementById("boundary1");
+let result = document.getElementsByClassName("boundary example");
+var you_win = true;
 // start game
 /**
  * mouse hover over start, 
@@ -16,45 +17,50 @@ var change = document.getElementById("boundary1");
 /////////////change color , alert, status
 
  m.addEventListener("mouseover", function (){
-  m3.addEventListener("mouseleave",function(){
-    console.log("cheating");
-  
-  });
+ 
   
   for (var i = 0 ; i < m1.length; i++) {
     
     m1[i].addEventListener("mouseover", function(){
        you_win = false;
-       console.log(you_win);
       change.style.color = "red";
-      if (you_win == false){
-    console.log("l");
-
+      
+      
+      console.log(you_win)
+      
+      result[0].innerHTML =" you lost";
 
       
-     } }) ;//change
+     } )} 
+     if ( result[0].innerHTML == "you lost"){
+      alert("u lost!")
 
-  }
-  
-  m2.addEventListener("mouseover",function (){
-    if (you_win == true){
+     }
+    else{
+      m2.addEventListener("mouseover",function (){
+    
     //update status
     console.log("win");
-  }
+    alert("you win!")
+    result[0].innerHTML =" you win";
   you_win = true;});
+
+    }}) ;//lost
+    m.addEventListener("click",function(){
+      //reset game
+      result[0].innerHTML = "";
+    })
+
+  
+  
+  
   
 
   
 
-  //flag_begin = true;
-  //counter++;
-  //console.log("start") ;// use counter and use if mouse out condion
-  //return flag_begin
-  
-  
+
  
-  
- });
+ 
  
 
 
