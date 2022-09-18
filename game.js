@@ -46,6 +46,8 @@ var you_win = true;
   you_win = true;});
 
     }}) ;//lost
+
+    
     m.addEventListener("click",function(){
       //reset game
       result[0].innerHTML = "";
